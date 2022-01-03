@@ -1,7 +1,7 @@
 <template>
-  <div class="item_card h-100 d-flex flex-column justify-content-between px-2 mt-1 border rounded">
+  <div class="item_card h-100 d-flex flex-column justify-content-between px-2 mt-1 border rounded" style="background-image:linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.9) 100%), url(https://wallpapercave.com/wp/qYcB0lY.jpg)">
     <h4 class="title text-left mt-2" style="color: var(--black-red)">{{this.item.name}}</h4>
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column my-2" @click="buy_item()">
       <div class="d-flex flew-row position-relative justify-content-between align-items-end" style="top:30px;">
         <div class="flex-row">
           <svg width="70px" height="70px" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -25,10 +25,7 @@
           <span class="position-relative" style="right: 50px; top: 5px">{{this.item["cost"]}}</span>
         </div>
       </div>
-      <b-button @click="buy_item()">
-        Buy
-        <a></a>
-      </b-button>
+      <b-button style="background-color: var(--bloody)">Buy</b-button>
     </div>
   </div>
 </template>

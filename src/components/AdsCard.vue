@@ -1,7 +1,7 @@
 <template>
     <div class="ad_card h-100 d-flex flex-column justify-content-between px-2 mt-1 border rounded" :style="change_color()">
       <h4 class="title text-left mt-2" >{{this.ad.message}}</h4>
-      <div class="d-flex flex-column">
+      <div class="d-flex flex-column my-2 " @click="solve_ad()">
         <div class="d-flex flew-row position-relative justify-content-between align-items-end" style="top:30px;">
           <div class="flex-row">
             <svg width="70px" height="70px" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -29,7 +29,7 @@
             {{this.ad["expiresIn"]}}
           </h4>
         </div>
-        <b-button @click="solve_ad()">
+        <b-button style="background-color: #674b24">
           Give it a try
         </b-button>
       </div>

@@ -1,9 +1,9 @@
 <template>
   <div class="menu d-flex flex-column px-3">
     <div class="hud d-flex flex-row position-fixed fixed-top pt-3 mx-3 justify-content-between bg-white">
-      <div class="col-5 d-flex flex-column">
-        <b-row class="d-flex flex-row col-4 justify-content-between">
-          <b-row class="lives-panel">
+      <div class="d-flex flex-column">
+        <b-row class="d-flex flex-row justify-content-between m-0">
+          <b-row class="lives-panel m-0">
             <div v-for="times in get_lives" :key="times" >
               <b-icon-heart-fill style="color: var(--bloody);" class="mr-1"></b-icon-heart-fill>
             </div>
@@ -13,7 +13,7 @@
                 <b-icon-clock style="color: var(--black-red)" class="mr-1"/>{{get_turn}}</span>
             </div>
         </b-row>
-        <b-row class="d-flex flex-row col-4 justify-content-between">
+        <b-row class="d-flex flex-row justify-content-between m-0">
           <div>
             <span>
               <b-icon-dash-circle-fill style="color: var(--yellow-money)"/>
@@ -27,8 +27,8 @@
           </div>
         </b-row>
       </div>
-      <div class="col-7 d-flex flex-row justify-content-between">
-        <b-form-group class="col-3">
+      <div class=" d-flex flex-row justify-content-between">
+        <b-form-group class="">
           <b-form-radio-group
               id="btn-radios-1"
               v-model="selected"
@@ -66,19 +66,20 @@
             </b-form-radio>
           </b-form-radio-group>
         </b-form-group>
-        <b-modal ref="gameOver" hide-footer title="GameOver">
-          <div class="d-block text-center">
-            <h3>{{this.$store.state.game_session.gameOver}}</h3>
-          </div>
-          <b-button class="mt-3" variant="outline-warning" block @click="go_to_start()">Start New Game</b-button>
-        </b-modal>
+      </div>
 
-        <div class="col-2 " v-b-popover.hover.leftbottom="reputationData" >
-          <b-iconstack font-scale="2" class="m-2">
-            <b-icon-bar-chart-fill stacked style="color: var(--yellow-money)"></b-icon-bar-chart-fill>
-            <b-icon-search stacked style="color: #5b0404" ></b-icon-search>
-          </b-iconstack>
+      <b-modal ref="gameOver" hide-footer title="GameOver">
+        <div class="d-block text-center">
+          <h3>{{this.$store.state.game_session.gameOver}}</h3>
         </div>
+        <b-button class="mt-3" variant="outline-warning" block @click="go_to_start()">Start New Game</b-button>
+      </b-modal>
+
+      <div class="" v-b-popover.hover.leftbottom="reputationData" >
+        <b-iconstack font-scale="2" class="m-2">
+          <b-icon-bar-chart-fill stacked style="color: var(--yellow-money)"></b-icon-bar-chart-fill>
+          <b-icon-search stacked style="color: #5b0404" ></b-icon-search>
+        </b-iconstack>
       </div>
     </div>
 
