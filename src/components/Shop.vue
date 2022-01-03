@@ -1,11 +1,13 @@
 <template>
- <div>
-   <div v-for="(item, i) in items" :key="i">* {{item.name}}</div>
- </div>
+  <div class="shop d-flex flex-row flex-wrap mr-3 my-5">
+    <div v-for="(item, i) in items" :key="i" class="col-xs-8 col-sm-4 col-lg-3 col-xl-2 my-1 mx-auto px-2" >
+      <ShopItem :item="item"></ShopItem>
+    </div>
+  </div>
 </template>
 
 <script>
-import axios from "axios";
+import ShopItem from "@/components/ShopItem";
 /**  id	String
  Item unique identifier
 
@@ -16,45 +18,19 @@ import axios from "axios";
  Item cost in gold**/
 export default {
   name: "Shop",
+  components: {ShopItem},
   data: function(){
     return{
-      ads:[],
-      purchase:{}
     }
   },
   methods:{
-    buy: function (itemId){
-      axios.post("https://dragonsofmugloar.com/api/v2/"+this.get_game_session.gameId+"/shop/buy/"+itemId)
-          .then(response => {
-            this.purchase = response.data
-            /**shoppingSuccess	String
-             Whether or not the purchase was successful
-
-             gold	Number
-             Amount of gold left after the transaction.
-
-             lives	Number
-             Amount of lives left after the transaction
-
-             level	Number
-             Dragon level after transaction
-
-             turn	Number
-             Current turn. Note the turn increases even if the purchase is unsuccessful.**/
-            this.$store.commit("updateShop")
-          })
-    }
   },
   computed: {
-    get_game_session(){
-      return this.$store.state.game_session
-    },
     items(){
       return this.$store.state.shop
     },
   },
   mounted () {
-    this.$store.commit("updateShop");
   }
 }
 </script>

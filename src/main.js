@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { BootstrapVue,  BootstrapVueIcons } from 'bootstrap-vue'
+import { BootstrapVue,  BootstrapVueIcons, PopoverPlugin, ToastPlugin, ModalPlugin } from 'bootstrap-vue'
 import VueRouter from "vue-router";
-import { createPopper } from '@popperjs/core';
+
 // const popcorn = document.querySelector('#popcorn');
 // const tooltip = document.querySelector('#tooltip');
 // createPopper(popcorn, tooltip, {
@@ -23,6 +23,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 Vue.use(VueRouter)
+Vue.use(PopoverPlugin)
+Vue.use(ToastPlugin)
+Vue.use(ModalPlugin)
 Vue.config.productionTip = false
 
 const router = new VueRouter({
@@ -38,6 +41,5 @@ const router = new VueRouter({
 new Vue({
   router,
   store,
-  createPopper,
   render: h => h(App),
 }).$mount('#app')

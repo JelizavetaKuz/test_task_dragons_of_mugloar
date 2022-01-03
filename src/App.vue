@@ -14,9 +14,15 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif, Serif, "Lucida Handwriting";
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 20px;
 }
+:root {
+  --bloody: #5b0404;
+  --black-red: #340e0e;
+  --yellow-money: #e5bf18;
+}
+
 </style>

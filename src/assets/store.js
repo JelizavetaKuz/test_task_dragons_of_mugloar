@@ -15,22 +15,28 @@ const state = {
         level:	Number,
         score:	Number,
         highScore:	Number,
-        turn: Number
+        turn: Number,
+        gameOver: String,
     },
     ads: [],
     shop: [],
-    empty:{},
+    reputation:{
+        people: Number,
+        state: Number,
+        underworld: Number
+    },
     prob : {
-        "Suicide mission":"#5b0404",
-        "Playing with fire":"#960202",
-        "Rather detrimental":"#e31806",
-        "Risky":"#e84a11",
-        "Gamble":"#ec7907",
+        "Impossible":"#b303c7",
+        "Suicide mission":"#ff2a83",
+        "Playing with fire":"#fd4161",
+        "Rather detrimental":"#ff1818",
+        "Risky":"#ff6118",
+        "Gamble":"#fd952e",
         "Hmmm....":"#e7b309",
         "Quite likely":"#d7e518",
         "Walk in the park":"#71d716",
         "Piece of cake":"#06b919",
-        "Sure thing":"#02ab29"}
+        "Sure thing":"#0b5d47"}
 }
 
 
@@ -59,6 +65,11 @@ const mutations = {
         axios.get('https://dragonsofmugloar.com/api/v2/'+ state.game_session.gameId +'/shop')
             .then(response => {state.shop = response.data})
     },
+    investigate(state){
+        axios
+            .post('https://dragonsofmugloar.com/api/v2/'+state.game_session.gameId+'/investigate/reputation')
+            .then(response => (state.reputation = response.data))
+    }
 
 }
 //export store module

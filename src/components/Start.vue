@@ -1,6 +1,7 @@
 <template>
   <div>
-    <button type="button" class="btn btn-primary start"  @click="go_to_menu()">Start Adventure</button>
+    <h1>Dragons of Mugloar</h1>
+    <button type="button" class="btn btn-primary start" style="color: var(--yellow-money); background-color: var(--black-red)"  @click="go_to_menu()">Start Adventure</button>
   </div>
 </template>
 
@@ -15,16 +16,20 @@ export default {
   },
   methods: {
     go_to_menu: function() {
-      this.$router.push("/Menu")
+      this.$router.push("/Menu");
     }
   },
   mounted () {
     axios
         .post('https://dragonsofmugloar.com/api/v2/game/start')
-        .then(response =>  {this.$store.commit("changeGame", response.data);
-            this.$store.commit("updateShop");
-            this.$store.commit("updateAds")
-        })
+        .then(response =>  {
+          this.$store.commit("changeGame", response.data);
+          this.$store.commit("updateShop");
+          this.$store.commit("updateAds");
+          this.$store.commit("investigate");
+        });
+    console.log(this.$store.state)
+
   }
 }
 </script>
